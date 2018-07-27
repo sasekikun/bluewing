@@ -1,0 +1,31 @@
+$breakpoint-over: (
+        's': '(min-width: 480px)',
+        'm': '(min-width: 768px)',
+        'l': '(min-width: 992px)',
+        'xl': '(min-width: 1200px)',
+) !default;
+
+$breakpoint-under: (
+        's': '(max-width: 479px)',
+        'm': '(max-width: 767px)',
+        'l': '(max-width: 991px)',
+        'xl': '(max-width: 1199px)',
+) !default;
+
+@mixin mq($under-size: m, $over-size: s) {
+  @media screen and #{map-get($breakpoint-under, $under-size)} and #{map-get($breakpoint-over, $over-size)} {
+    @content;
+  }
+}
+
+@mixin mq-over($breakpoint: m) {
+  @media screen and #{map-get($breakpoint-over, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-under($breakpoint: m) {
+  @media screen and #{map-get($breakpoint-under, $breakpoint)} {
+    @content;
+  }
+}
